@@ -24,3 +24,6 @@ const sectionObserver = new IntersectionObserver((entries) => {
 }, observerOptions);
 
 sections.forEach(section => sectionObserver.observe(section));
+
+// Hover Effects for the "menu buttons"
+document.querySelector("#__hover")

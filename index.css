@@ -10,8 +10,24 @@ body {
     font-family: "Syncopate", serif;
     font-size: large;
     margin: 0;
-    background-color: #004883;
     color: #ffffff;
+    height: 100%;
+    overflow: hidden; /* Prevent scrolling */
+    background: linear-gradient(45deg, #ff9a9e, #fad0c4, #fbc2eb);
+    background-size: 400% 400%;
+    animation: gradient-animation 10s ease infinite; /* Infinite loop */
+}
+
+@keyframes gradient-animation {
+    0% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0% 50%;
+    }
 }
 
 .profile-pic {
