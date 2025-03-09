@@ -14,12 +14,12 @@ body {
     color: #ffffff;
 }
 
-img {
-    filter: grayscale(50%) blur(2px);
+.profile-pic {
+    width: 100px;
+    height: 100px;
     border-radius: 50%;
-    margin: 20px auto;
-    width: 150px;
-    display: block;
+    object-fit: cover;
+    border: 2px solid #333;
 }
 
 /* Layout and Section Styles */
