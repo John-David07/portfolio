@@ -27,3 +27,19 @@ sections.forEach(section => sectionObserver.observe(section));
 
 // Hover Effects for the "menu buttons"
 document.querySelector("#__hover")
+
+// Select the container for the background
+const bgContainer = document.querySelector('.animated-bg');
+
+// Generate 50 floating lines
+for (let i = 0; i < 50; i++) {
+    const span = document.createElement('span');
+
+    // Randomize position and rotation
+    span.style.setProperty('--random-x', Math.random()); // 0 to 1 for horizontal position
+    span.style.setProperty('--random-y', Math.random()); // 0 to 1 for vertical position
+    span.style.setProperty('--random-rotation', Math.random()); // Random rotation
+
+    // Append the span (line) to the container
+    bgContainer.appendChild(span);
+}

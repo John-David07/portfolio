@@ -2,7 +2,7 @@
 h1 {
     font-family: "Lora", serif;
     font-size: 2.5rem;
-    color: #333;
+    color: #c3ff2d;
     margin-top: 20px;
 }
 
@@ -10,7 +10,10 @@ body {
     font-family: "Syncopate", serif;
     font-size: large;
     margin: 0;
-    background-color: #333;
+    padding: 0;
+    overflow: hidden;
+    height: 100%;
+    background-color: #2f4e60;
     color: #ffffff;
 }
 
@@ -25,14 +28,143 @@ body {
 }
 
 .animated-bg {
+    position: fixed;
+    top: 0;
+    left: 0;
     width: 100%;
     height: 100%;
-    background: linear-gradient(45deg, #ff9a9e, #fad0c4, #fbc2eb);
-    background-size: 400% 400%; /* Makes the animation smooth */
-    animation: gradient-animation 10s ease infinite; /* Infinite loop */
+    z-index: -1;
+    overflow: hidden; /* Prevent shapes from leaving the viewport */
+}
+
+.animated-bg span {
+    position: absolute;
+    display: block;
+    background: #ff217d; /* Shape color */
+    opacity: 15%;
+
+    /* Start as a line */
+    width: 4px;
+    height: 120px;
+
+    /* Random positioning */
+    top: calc(100% * var(--random-y));
+    left: calc(100% * var(--random-x));
+
+    /* Animation for morphing shapes */
+    animation: morph-shape 12s ease-in-out infinite, float 16s linear infinite;
+}    
+.animated-bg span:nth-child(1) {
+    --random-x: 0.1; /* Random horizontal position */
+    --random-y: 0.3; /* Random vertical position */
+    --random-rotation: 0.2; /* Random rotation */
+    animation-duration: 12s;
+}
+.animated-bg span:nth-child(2) {
+    --random-x: 0.2;
+    --random-y: 0.4;
+    --random-rotation: 0.2;
+    animation-duration: 12s;
+}
+.animated-bg span:nth-child(3) {
+    --random-x: 0.8;
+    --random-y: 0.6;
+    --random-rotation: 0.2;
+    animation-duration: 12s;
+}
+.animated-bg span:nth-child(4) {
+    --random-x: 0.1;
+    --random-y: 0.9;
+    --random-rotation: 0.2;
+    animation-duration: 12s;
+}
+.animated-bg span:nth-child(5) {
+    --random-x: 0.5;
+    --random-y: 0.1;
+    --random-rotation: 0.2;
+    animation-duration: 12s;
+}
+.animated-bg span:nth-child(6) {
+    --random-x: 0.7;
+    --random-y: 0.3;
+    --random-rotation: 0.2;
+    animation-duration: 12s;
+}
+.animated-bg span:nth-child(7) {
+    --random-x: 0.9;
+    --random-y: 0.1;
+    --random-rotation: 0.2;
+    animation-duration: 12s;
+}
+.animated-bg span:nth-child(8) {
+    --random-x: 0.7;
+    --random-y: 0.3;
+    --random-rotation: 0.2;
+    animation-duration: 12s;
+}
+.animated-bg span:nth-child(9) {
+    --random-x: 0.4;
+    --random-y: 0.1;
+    --random-rotation: 0.2;
+    animation-duration: 12s;
+}
+.animated-bg span:nth-child(10) {
+    --random-x: 0.6;
+    --random-y: 0.4;
+    --random-rotation: 0.2;
+    animation-duration: 12s;
+}
+.animated-bg span:nth-child(11) {
+    --random-x: 0.5;
+    --random-y: 0.8;
+    --random-rotation: 0.2;
+    animation-duration: 12s;
+}
+
+@keyframes morph-shape {
+    0% {
+        border-radius: 0%; /* Line shape (rectangular) */
+        width: 4px;
+        height: 120px;
+        clip-path: none; /* Keep it as a line */
+    }
+    25% {
+        border-radius: 50%; /* Circle */
+        width: 100px;
+        height: 100px;
+    }
+    50% {
+        border-radius: 0%; /* Square */
+        width: 100px;
+        height: 100px;
+    }
+    75% {
+        clip-path: polygon(50% 0%, 0% 100%, 100% 100%); /* Triangle */
+        width: 120px;
+        height: 120px;
+    }
+    100% {
+        border-radius: 0%; /* Back to line */
+        width: 4px;
+        height: 120px;
+        clip-path: none;
+    }
+}
+@keyframes float {
+    0% {
+        transform: translateY(0) rotate(0deg);
+    }
+    50% {
+        transform: translateY(-20px) rotate(15deg);
+    }
+    100% {
+        transform: translateY(0) rotate(0deg);
+    }
 }
 
 .profile-pic {
+    position: relative; /* Ensure it’s above the background */
+    z-index: 1;
     width: 250px;
     height: 250px;
     border-radius: 50%;
@@ -63,7 +195,7 @@ nav ul li {
 
 nav ul li a {
     text-decoration: none;
-    color: #333;
+    color: #ffffff;
     font-size: 1.2rem;
     padding: 10px 15px;
     transition: background-color 0.3s ease, color 0.3s ease;
@@ -71,7 +203,7 @@ nav ul li a {
 
 nav ul li a:hover {
     background-color: #21f4ff;
-    color: #fff;
+    color: #000000;
     border-radius: 5px;
 }
 
