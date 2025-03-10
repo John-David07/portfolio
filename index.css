@@ -1,4 +1,3 @@
-/* Typography and General Styles */
 h1 {
     font-family: "Lora", serif;
     font-size: 2.5rem;
@@ -23,7 +22,7 @@ body {
         height: 250px;
     }
     nav ul {
-        flex-direction: column; /* Stack links vertically */
+        flex-direction: column;
     }
 }
 
@@ -34,30 +33,27 @@ body {
     width: 100%;
     height: 100%;
     z-index: -1;
-    overflow: hidden; /* Prevent shapes from leaving the viewport */
+    overflow: hidden;
 }
 
 .animated-bg span {
     position: absolute;
     display: block;
-    background: #ff217d; /* Shape color */
+    background: #ff217d;
     opacity: 15%;
 
-    /* Start as a line */
     width: 4px;
     height: 120px;
 
-    /* Random positioning */
     top: calc(100% * var(--random-y));
     left: calc(100% * var(--random-x));
 
-    /* Animation for morphing shapes */
     animation: morph-shape 12s ease-in-out infinite, float 16s linear infinite;
 }    
 .animated-bg span:nth-child(1) {
-    --random-x: 0.1; /* Random horizontal position */
-    --random-y: 0.3; /* Random vertical position */
-    --random-rotation: 0.2; /* Random rotation */
+    --random-x: 0.1;
+    --random-y: 0.3;
+    --random-rotation: 0.2;
     animation-duration: 12s;
 }
 .animated-bg span:nth-child(2) {
@@ -123,28 +119,28 @@ body {
 
 @keyframes morph-shape {
     0% {
-        border-radius: 0%; /* Line shape (rectangular) */
+        border-radius: 0%;
         width: 4px;
         height: 120px;
-        clip-path: none; /* Keep it as a line */
+        clip-path: none;
     }
     25% {
-        border-radius: 50%; /* Circle */
+        border-radius: 50%;
         width: 100px;
         height: 100px;
     }
     50% {
-        border-radius: 0%; /* Square */
+        border-radius: 0%;
         width: 100px;
         height: 100px;
     }
     75% {
-        clip-path: polygon(50% 0%, 0% 100%, 100% 100%); /* Triangle */
+        clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
         width: 120px;
         height: 120px;
     }
     100% {
-        border-radius: 0%; /* Back to line */
+        border-radius: 0%;
         width: 4px;
         height: 120px;
         clip-path: none;
@@ -163,7 +159,7 @@ body {
 }
 
 .profile-pic {
-    position: relative; /* Ensure it’s above the background */
+    position: relative;
     z-index: 1;
     width: 250px;
     height: 250px;
@@ -172,13 +168,11 @@ body {
     border: 2px solid #333;
 }
 
-/* Layout and Section Styles */
 header, nav, section, footer {
     padding: 20px;
     text-align: center;
 }
 
-/* Navigation Menu */
 nav ul {
     font-family: "Rubik Moonrocks", serif;
     list-style-type: none;
@@ -188,11 +182,9 @@ nav ul {
     gap: 15px;
     margin: 0;
 }
-
 nav ul li {
     margin: 0 10px;
 }
-
 nav ul li a {
     text-decoration: none;
     color: #ffffff;
@@ -206,8 +198,6 @@ nav ul li a:hover {
     color: #000000;
     border-radius: 5px;
 }
-
-/* Footer */
 footer {
     font-family: "Syncopate", serif;
     background-color: #21f4ff;
