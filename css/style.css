@@ -82,6 +82,7 @@ a:hover {
 /* Header & Navigation */
 header {
     background: white;
+    display:inline;
     box-shadow: var(--box-shadow);
     position: sticky;
     top: 0;
