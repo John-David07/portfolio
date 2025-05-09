@@ -517,7 +517,7 @@ footer {
 
 /* Footer with Wave */
 .wave-footer {
-    position: relative;
+    position: fixed;
     background: #2c3e50;
     color: white;
     text-align: center;
@@ -536,10 +536,10 @@ section.tech-stack {
 /* Force full-width footer */
 footer.wave-footer {
     padding-top: 80px;
-    position: relative;
+    position: fixed;
     left: 0;
     right: 0;
-    bottom: -63px;
+    bottom: 0px;
 }
 
 .footer-content {
