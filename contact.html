@@ -4,173 +4,76 @@
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <link rel="stylesheet" href="index.css"> <!-- External CSS file -->
+
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Contact Me | John David Dechavez</title>
-    <link rel="stylesheet" href="css/style.css">
+    <title>John David Dechavez | Contact</title>
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Lora&family=Open+Sans&display=swap">
+
+    <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <style>
-        /* Consistent with About page colors */
-        :root {
-            --primary: #00ffff;    /* Blue */
-            --secondary: #586b7e;  /* Dark blue */
-            --accent: #ffffff;     /* Red */
-            --text-light: #000000; /* Light gray */
-        }
-        
-        /* Contact Page Specific Styles */
-        .contact-container {
-            display: flex;
-            min-height: 100vh;
-            background: var(--secondary);
-            color: var(--text-light);
-        }
-        
-        .contact-left {
-            flex: 1;
-            padding: 4rem;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-        }
-        
-        .contact-right {
-            flex: 1;
-            background: rgba(29, 36, 47, 0.919);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-        
-        .contact-title {
-            font-size: 3rem;
-            margin-bottom: 2rem;
-            color: var(--primary);
-            position: relative;
-        }
-        
-        .contact-title:after {
-            content: '';
-            position: absolute;
-            bottom: -10px;
-            left: 0;
-            width: 80px;
-            height: 4px;
-            background: var(--accent);
-        }
-        
-        .contact-info {
-            margin: 2rem 0;
-        }
-        
-        .contact-item {
-            display: flex;
-            align-items: center;
-            margin: 1.5rem 0;
-            font-size: 1.1rem;
-        }
-        
-        .contact-icon {
-            width: 50px;
-            height: 50px;
-            background: var(--primary);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin-right: 1.5rem;
-            font-size: 1.5rem;
-        }
-        
-        .contact-form {
-            width: 80%;
-            max-width: 500px;
-        }
-        
-        .form-group {
-            margin-bottom: 1.5rem;
-        }
-        
-        input, textarea {
-            width: 100%;
-            padding: 1rem;
-            background: rgb(255, 255, 255);
-            border: 2px solid var(--primary);
-            border-radius: 5px;
-            color: var(--text-light);
-            font-size: 1rem;
-        }
-        
-        textarea {
-            min-height: 150px;
-            resize: vertical;
-        }
-        
-        .submit-btn {
-            background: var(--accent);
-            color: black;
-            border: none;
-            padding: 1rem 2rem;
-            font-size: 1.1rem;
-            border-radius: 5px;
-            cursor: pointer;
-            transition: all 0.3s ease;
-        }
-        
-        .submit-btn:hover {
-            background: #c1ff15;
-            color: #99165a;
-            transform: translateY(-3px);
-        }
-        
-        /* Responsive */
-        @media (max-width: 768px) {
-            .contact-container {
-                flex-direction: column;
-            }
-            
-            .contact-left, .contact-right {
-                padding: 2rem;
-            }
-        }
-    </style>
 </head>
 <body>
-    <div class="contact-container">
-        <!-- Left Side - Contact Info -->
-        <div class="contact-left">
-            <h1 class="contact-title">Contact me!</h1>
-            
-            <div class="contact-info">
-                <div class="contact-item">
-                    <div class="contact-icon">
-                        <i class="fas fa-envelope"></i>
-                    </div>
-                    <span>dave_dechavez@yahoo.com</span>
-                </div>
-                
-                <div class="contact-item">
-                    <div class="contact-icon">
-                        <i class="fas fa-map-marker-alt"></i>
-                    </div>
-                    <span>Philippines</span>
-                </div>
-            </div>
-        </div>
-        
-        <!-- Right Side - Contact Form -->
-        <div class="contact-right">
-            <div class="social-links">
-                <a href="https://www.linkedin.com/in/john-david-dechavez-91b788363/" 
-                    class="social-icon" 
-                    target="_blank"
-                    aria-label="LinkedIn Profile">
-                    <i class="fab fa-linkedin-in"></i>
-                </a>
-                <a href="#" class="social-icon"><i class="fab fa-github"></i></a>
-                <a href="#" class="social-icon"><i class="fab fa-twitter"></i></a>
-            </div>
-        </div>
+    <!-- Waves -->
+    <div>
+        <div class="wave"></div>
+        <div class="wave"></div>
+        <div class="wave"></div>
     </div>
+
+    <!-- Navigation -->
+    <nav>
+        <ul>
+            <li><a href="index.html" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Go to Home">Home</a></li>
+            <li><a href="about.html" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Learn About Me">About</a></li>
+            <li><a href="techstack.html" data-bs-toggle="tooltip" data-bs-placement="bottom" title="View My Tech Stack">Tech Stack</a></li>
+            <li><a href="contact.html" class="active" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Get in Touch">Contact</a></li>
+        </ul>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="container py-5">
+        <section class="text-center mb-5">
+            <h2>Connect with <span class="text-primary">Me</span></h2>
+            <p class="mt-3">
+                I'm active on the platforms below. Feel free to check out my portfolio and connect with me!
+            </p>
+        </section>
+
+        <section class="row justify-content-center text-center">
+            <!-- LinkedIn -->
+            <div class="col-md-4 mb-4">
+                <a href="https://www.linkedin.com/in/YOUR_LINKEDIN_USERNAME" target="_blank">
+                    <img src="linkedin-logo.png" alt="LinkedIn" class="img-fluid rounded-circle mb-3" width="120" height="120">
+                </a>
+                <h4>LinkedIn</h4>
+                <a href="https://www.linkedin.com/in/YOUR_LINKEDIN_USERNAME" target="_blank" class="btn btn-outline-primary mt-2">Connect</a>
+            </div>
+
+            <!-- GitHub -->
+            <div class="col-md-4 mb-4">
+                <a href="https://github.com/YOUR_GITHUB_USERNAME" target="_blank">
+                    <img src="github-logo.png" alt="GitHub" class="img-fluid rounded-circle mb-3" width="120" height="120">
+                </a>
+                <h4>GitHub</h4>
+                <a href="https://github.com/YOUR_GITHUB_USERNAME" target="_blank" class="btn btn-outline-light mt-2">Connect</a>
+            </div>
+        </section>
+    </main>
+
+    <!-- Tooltip Init -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'));
+            var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
+                return new bootstrap.Tooltip(tooltipTriggerEl);
+            });
+        });
+    </script>
 </body>
 </html>
