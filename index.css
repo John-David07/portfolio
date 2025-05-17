@@ -1,160 +1,165 @@
-h1 {
-    font-family: "Lora", serif;
-    font-size: 2.5rem;
-    color: #ffffff;
-    margin-top: 20px;
-}
-
+/* Fonts and Body */
 body {
-    font-family: "Syncopate", serif, -apple-system, "Segoe UI", BlinkMacSystemFont, Arial sans-serif;
-    font-size: large;
-    margin: auto;
-    padding: 0;
-    overflow: auto;
-    background: linear-gradient(315deg, rgb(32, 50, 81) 3%, rgb(103, 161, 199) 38%, rgb(103, 161, 199) 68%, rgb(32, 50, 81) 98%);
-    animation: gradient 15s ease infinite;
-    background-size: 400% 400%;
-    background-attachment: fixed;
+  font-family: 'Outfit', sans-serif;
+  background: linear-gradient(to bottom, #0f2027, #203a43, #2c5364);
+  color: #ffffff;
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+  position: relative;
 }
 
-.shadow-dance-text {
-    color: #fff;
-    text-shadow: 5px 5px 0 #ff005e, 10px 10px 0 #00d4ff;
-    animation: shadow-dance 10s infinite;
-}
-
-@keyframes gradient {
-    0% {
-        background-position: 0% 0%;
-    }
-    50% {
-        background-position: 100% 100%;
-    }
-    100% {
-        background-position: 0% 0%;
-    }
-}
-
-.wave {
-    background: rgb(255 255 255 / 25%);
-    border-radius: 1000% 1000% 0 0;
-    position: fixed;
-    width: 200%;
-    height: 12em;
-    animation: wave 10s -3s linear infinite;
-    transform: translate3d(0, 0, 0);
-    opacity: 0.8;
-    bottom: 0;
-    left: 0;
-    z-index: -1;
-}
-
-.wave:nth-of-type(2) {
-    bottom: -1.25em;
-    animation: wave 18s linear reverse infinite;
-    opacity: 0.8;
-}
-
-.wave:nth-of-type(3) {
-    bottom: -2.5em;
-    animation: wave 20s -1s reverse infinite;
-    opacity: 0.9;
-}
-
-@keyframes wave {
-    2% {
-        transform: translateX(1);
-    }
-
-    25% {
-        transform: translateX(-25%);
-    }
-
-    50% {
-        transform: translateX(-50%);
-    }
-
-    75% {
-        transform: translateX(-25%);
-    }
-
-    100% {
-        transform: translateX(1);
-    }
-}
-
-.header-content {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
-}
-
-.profile-pic {
-    filter: grayscale(50%);
-    background-color: #2c4776;
-    width: 250px;
-    height: 250px;
-    border-radius: 50%;
-    object-fit: cover;
-    border: 2px solid #333;
-    margin-bottom: 20px;
-}
-
-.intro-border {
-    font-family: "Syncopate";
-    border: 2px solid #ffffff;
-    padding: 12px 24px;
-    border-radius: 30px;
-    background-color: rgb(29, 59, 76);
-    font-style: normal;
-    font-weight: 500;
-    letter-spacing: 1px;
-    color: #ffffff;
-    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.8);
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-    max-width: 80%; /* Prevent paragraph from being too wide */
-    margin: 0 auto; /* Center the paragraph */
-}
-
-header, nav, section, footer {
-    padding: 20px;
-    text-align: center;
+/* Navigation Styles */
+nav {
+  background: rgba(0, 0, 0, 0.6);
+  padding: 1rem 0;
+  position: relative;
+  z-index: 10;
 }
 
 nav ul {
-    font-family: "Inconsolata", serif;
-    list-style-type: none;
-    padding: 0;
-    display: flex;
-    justify-content: center;
-    gap: 15px;
-    margin: 0;
-}
-nav ul li {
-    margin: 0 10px;
-}
-nav ul li a {
-    text-decoration: none;
-    color: #ffffff;
-    font-size: 1.2rem;
-    padding: 10px 15px;
-    transition: background-color 0.3s ease, color 0.3s ease;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  list-style: none;
+  margin: 0;
+  padding: 0;
 }
 
-nav ul li a:hover {
-    background-color: #ffffff;
-    color: rgb(52, 152, 219);
-    border-radius: 5px;
+nav li {
+  margin: 0.5rem 1rem;
 }
-footer {
-    font-family: "Syncopate", serif;
-    background-color: #21f4ff;
-    position: fixed;
-    width: 100%;
-    bottom: 0;
-    padding: 10px;
-    color: #333;
-    text-align: center;
-    font-size: 0.9rem;
+
+nav a {
+  color: #ffffff;
+  text-decoration: none;
+  font-weight: 600;
+  font-family: 'Space Grotesk', sans-serif;
+  position: relative;
+  transition: color 0.3s ease;
+}
+
+nav a:hover,
+nav a.active {
+  color: #00d2ff;
+}
+
+nav a.active::after,
+nav a:hover::after {
+  content: '';
+  position: absolute;
+  bottom: -5px;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background-color: #00d2ff;
+}
+
+/* Waves */
+.wave {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 200%;
+  height: 120px;
+  background: url("data:image/svg+xml;utf8,<svg viewBox='0 0 1200 100' xmlns='http://www.w3.org/2000/svg'><path d='M0,30 C300,90 900,0 1200,60 L1200,00 L0,0 Z' fill='%2300d2ff'/></svg>");
+  background-size: cover;
+  z-index: 1;
+  opacity: 0.3;
+  animation: waveMove 10s linear infinite;
+}
+
+.wave2 {
+  opacity: 0.5;
+  bottom: 15px;
+  animation-duration: 15s;
+}
+
+.wave3 {
+  opacity: 0.2;
+  bottom: 30px;
+  animation-duration: 20s;
+}
+
+@keyframes waveMove {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+/* Profile Card */
+.profile-card {
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 1rem;
+  padding: 2rem;
+  max-width: 90%;
+  width: 100%;
+  backdrop-filter: blur(6px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 15px 30px rgba(0, 210, 255, 0.2);
+  margin: auto;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.profile-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 20px 40px rgba(0, 210, 255, 0.4);
+}
+
+.profile-pic {
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 3px solid #00d2ff;
+  box-shadow: 0 4px 8px rgba(0, 210, 255, 0.4);
+}
+
+h1 {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 2rem;
+  font-weight: 700;
+  color: #ffffff;
+  margin-bottom: 0.5rem;
+}
+
+.intro {
+  color: #dcdcdc;
+  font-size: 1rem;
+  font-weight: 400;
+  padding: 0 1rem;
+}
+
+/* Responsive Adjustments */
+@media (min-width: 768px) {
+  .profile-pic {
+    width: 180px;
+    height: 180px;
+  }
+
+  h1 {
+    font-size: 2.5rem;
+  }
+
+  .intro {
+    font-size: 1.1rem;
+  }
+}
+
+@media (max-width: 768px) {
+  nav ul {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  nav li {
+    margin: 0.5rem 0;
+  }
+
+  .profile-card {
+    padding: 1.5rem 1rem;
+  }
+
+  .intro {
+    font-size: 1rem;
+  }
 }
