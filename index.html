@@ -13,36 +13,60 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
   <!-- Google Fonts -->
-  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;800&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Barlow:wght@400;500;600&family=Chakra+Petch:wght@500;600;700&family=Share+Tech+Mono&display=swap" rel="stylesheet">
 
   <!-- Custom CSS -->
-  <link rel="stylesheet" href="index.css">
+  <link rel="stylesheet" href="cyberpunk.css">
+  <link rel="stylesheet" href="intro-music.css">
+  <script>try{if(sessionStorage.getItem('introSeen'))document.documentElement.classList.add('no-intro')}catch(e){}</script>
 </head>
 <body>
-  <!-- Waves Background -->
-  <div class="wave wave1"></div>
-  <div class="wave wave2"></div>
-  <div class="wave wave3"></div>
+
+  <!-- Intro screen -->
+  <div id="intro" role="status" aria-label="Now Loading">
+    <div class="intro-tears" aria-hidden="true">
+      <i style="--y:12%;--h:10px;--d:0s"></i>
+      <i style="--y:28%;--h:26px;--d:.18s"></i>
+      <i style="--y:46%;--h:6px;--d:.4s"></i>
+      <i style="--y:63%;--h:18px;--d:.07s"></i>
+      <i style="--y:81%;--h:12px;--d:.33s"></i>
+    </div>
+    <div class="intro-stage" aria-hidden="true">
+      <div class="intro-title">
+        <span class="intro-line intro-line-1">Now</span>
+        <span class="intro-line intro-line-2">Loading</span>
+      </div>
+      <div class="intro-bar"><div class="intro-bar-fill"></div></div>
+      <div class="intro-pct">000%</div>
+    </div>
+    <div class="intro-flash" aria-hidden="true"></div>
+    <div class="intro-flash intro-flash-2" aria-hidden="true"></div>
+    <div class="intro-skip" aria-hidden="true">Click to skip</div>
+  </div>
 
   <!-- Navigation -->
   <nav>
     <ul>
-      <li><a href="index.html" class="active">Home</a></li>
-      <li><a href="about.html">About</a></li>
-      <li><a href="techstack.html">Tech Stack</a></li>
-      <li><a href="contact.html">Contact</a></li>
+      <li><a href="index.html" class="active" data-text="Home">Home</a></li>
+      <li><a href="about.html" data-text="About">About</a></li>
+      <li><a href="techstack.html" data-text="Tech Stack">Tech Stack</a></li>
+      <li><a href="contact.html" data-text="Contact">Contact</a></li>
     </ul>
   </nav>
 
   <!-- Main Content -->
-  <main class="container py-5 text-white position-relative text-center" style="z-index: 2;">
+  <main class="container py-5 text-white position-relative text-center">
     <section class="mb-5">
       <div class="profile-card mx-auto">
-        <img class="profile-pic mb-3" src="images/BRUH.png" alt="John David Dechavez">
-        <h1 class="mb-3">John David <br> Dechavez</h1>
-        <p class="intro">Web developer creating beautiful, functional websites</p>
+        <img class="profile-pic mb-3" src="images/bruh.png" alt="John David Dechavez">
+        <h1 class="mb-3 glitch auto" data-text="John David&#10;Dechavez">John David <br> Dechavez</h1>
+        <p class="intro">Software/Web developer creating beautiful, functional websites and programs</p>
       </div>
     </section>
   </main>
+
+  <script src="cyberpunk.js"></script>
+  <script src="intro.js"></script>
+  <script src="music.js"></script>
 </body>
 </html>

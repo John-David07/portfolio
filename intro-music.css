@@ -1,0 +1,290 @@
+/* =========================================================
+   INTRO SCREEN + MUSIC PLAYER  (loads after cyberpunk.css)
+   ========================================================= */
+
+/* ---------- Intro state handling ---------- */
+html:not(.no-intro) { overflow: hidden; }
+html.no-intro #intro { display: none; }
+/* Hold the page's power-on animation until the intro is leaving */
+html:not(.no-intro):not(.intro-leaving) main > section { animation-play-state: paused; }
+
+/* ---------- Intro overlay ---------- */
+#intro {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  display: grid;
+  place-items: center;
+  overflow: hidden;
+  cursor: pointer;
+  background:
+    radial-gradient(900px 500px at 50% 45%, rgba(0, 240, 255, 0.13), transparent 65%),
+    radial-gradient(700px 400px at 80% 90%, rgba(255, 42, 109, 0.12), transparent 65%),
+    #05050a;
+  /* Failsafe: if the script ever fails, the overlay clears itself */
+  animation: intro-failsafe 0.01s 8s forwards;
+}
+#intro::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(0, 240, 255, 0.07) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0, 240, 255, 0.07) 1px, transparent 1px);
+  background-size: 44px 44px;
+}
+#intro::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background:
+    repeating-linear-gradient(to bottom, transparent 0, transparent 2px, rgba(0, 0, 0, 0.3) 3px),
+    radial-gradient(ellipse at center, transparent 55%, rgba(0, 0, 0, 0.7));
+}
+
+/* Horizontal tear bars */
+.intro-tears i {
+  position: absolute;
+  left: 0;
+  top: var(--y);
+  width: 100%;
+  height: var(--h);
+  background: linear-gradient(90deg, transparent 0, rgba(0, 240, 255, 0.55) 20%, rgba(255, 42, 109, 0.55) 70%, transparent 100%);
+  mix-blend-mode: screen;
+  opacity: 0;
+  animation: tear 1.3s steps(1) infinite;
+  animation-delay: var(--d);
+}
+
+/* Everything glitches + chromatic aberration lives on the stage */
+.intro-stage {
+  position: relative;
+  z-index: 2;
+  text-align: center;
+  padding: 1rem;
+  animation: stage-glitch 2.6s steps(1) both;
+}
+
+.intro-title {
+  font-family: var(--font-display);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  line-height: 0.95;
+  font-size: clamp(3rem, 13vw, 8.5rem);
+}
+.intro-line {
+  display: block;
+  /* starts huge & blurred "at the screen", slams down to the center */
+  animation: slam 0.75s both;
+}
+.intro-line-1 { color: #fff; animation-delay: 0.2s; }
+.intro-line-2 { color: var(--yellow); text-shadow: 0 0 24px rgba(252, 238, 10, 0.45); animation-delay: 0.5s; }
+
+/* Progress bar */
+.intro-bar {
+  width: min(420px, 70vw);
+  height: 14px;
+  margin: 2rem auto 0.6rem;
+  padding: 2px;
+  border: 1px solid var(--cyan);
+  clip-path: polygon(6px 0, 100% 0, 100% calc(100% - 6px), calc(100% - 6px) 100%, 0 100%, 0 6px);
+  animation: appear 0.01s 0.9s both;
+}
+.intro-bar-fill {
+  height: 100%;
+  width: 0;
+  background: repeating-linear-gradient(90deg, var(--yellow) 0 10px, transparent 10px 13px);
+}
+.intro-pct {
+  font-family: var(--font-mono);
+  font-size: 1rem;
+  letter-spacing: 0.15em;
+  color: var(--cyan);
+  animation: appear 0.01s 0.9s both;
+}
+
+/* Impact flashes when each line lands */
+.intro-flash {
+  position: absolute;
+  inset: 0;
+  z-index: 3;
+  pointer-events: none;
+  background: var(--yellow);
+  opacity: 0;
+  animation: flash 0.22s steps(2) 0.88s both;
+}
+.intro-flash-2 { animation-delay: 1.18s; }
+
+.intro-skip {
+  position: absolute;
+  z-index: 3;
+  left: 0; right: 0; bottom: 1.5rem;
+  text-align: center;
+  font-family: var(--font-mono);
+  font-size: 0.85rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+/* Leaving: CRT switch-off reveals the page */
+#intro.leaving { animation: crt-off 0.5s ease-in forwards; pointer-events: none; }
+
+/* ---------- Intro keyframes ---------- */
+@keyframes slam {
+  0%   { opacity: 0; transform: scale(7);    filter: blur(16px); }
+  10%  { opacity: 1; transform: scale(6);    filter: blur(14px); animation-timing-function: cubic-bezier(0.7, 0, 0.9, 0.5); }
+  60%  { opacity: 1; transform: scale(0.92); filter: blur(0);    animation-timing-function: ease-out; }
+  78%  { transform: scale(1.06); }
+  100% { opacity: 1; transform: scale(1);    filter: blur(0); }
+}
+
+@keyframes stage-glitch {
+  0%   { transform: translate(-12px, 0) skewX(8deg);  filter: drop-shadow(-14px 0 0 rgba(255, 42, 109, 0.9)) drop-shadow(14px 0 0 rgba(0, 240, 255, 0.9)); }
+  4%   { transform: translate(10px, 3px) skewX(-6deg); filter: drop-shadow(12px 0 0 rgba(255, 42, 109, 0.9)) drop-shadow(-12px 0 0 rgba(0, 240, 255, 0.9)) hue-rotate(40deg); }
+  8%   { transform: translate(-6px, -2px);            filter: drop-shadow(-8px 0 0 rgba(255, 42, 109, 0.9)) drop-shadow(8px 0 0 rgba(0, 240, 255, 0.9)); }
+  12%  { transform: translate(4px, 0) skewX(3deg);    filter: drop-shadow(6px 0 0 rgba(255, 42, 109, 0.85)) drop-shadow(-6px 0 0 rgba(0, 240, 255, 0.85)); }
+  16%  { transform: none;                             filter: drop-shadow(-3px 0 0 rgba(255, 42, 109, 0.8)) drop-shadow(3px 0 0 rgba(0, 240, 255, 0.8)); }
+  34%  { transform: none;                             filter: drop-shadow(-2px 0 0 rgba(255, 42, 109, 0.75)) drop-shadow(2px 0 0 rgba(0, 240, 255, 0.75)); }
+  35%  { transform: translate(-8px, 4px) skewX(-8deg); filter: drop-shadow(-12px 0 0 rgba(255, 42, 109, 0.9)) drop-shadow(12px 0 0 rgba(0, 240, 255, 0.9)); }
+  37%  { transform: translate(6px, -3px);             filter: drop-shadow(9px 0 0 rgba(255, 42, 109, 0.9)) drop-shadow(-9px 0 0 rgba(0, 240, 255, 0.9)); }
+  39%  { transform: none;                             filter: drop-shadow(-2px 0 0 rgba(255, 42, 109, 0.75)) drop-shadow(2px 0 0 rgba(0, 240, 255, 0.75)); }
+  46%  { transform: translate(7px, 3px) skewX(7deg);  filter: drop-shadow(12px 0 0 rgba(255, 42, 109, 0.9)) drop-shadow(-12px 0 0 rgba(0, 240, 255, 0.9)); }
+  48%  { transform: translate(-5px, -2px);            filter: drop-shadow(-8px 0 0 rgba(255, 42, 109, 0.9)) drop-shadow(8px 0 0 rgba(0, 240, 255, 0.9)); }
+  50%  { transform: none;                             filter: drop-shadow(-2px 0 0 rgba(255, 42, 109, 0.75)) drop-shadow(2px 0 0 rgba(0, 240, 255, 0.75)); }
+  62%  { transform: translate(-6px, 0) skewX(-5deg);  filter: drop-shadow(-9px 0 0 rgba(255, 42, 109, 0.9)) drop-shadow(9px 0 0 rgba(0, 240, 255, 0.9)); }
+  63.5%{ transform: none;                             filter: drop-shadow(-2px 0 0 rgba(255, 42, 109, 0.75)) drop-shadow(2px 0 0 rgba(0, 240, 255, 0.75)); }
+  76%  { transform: translate(5px, 1px) skewX(4deg);  filter: drop-shadow(8px 0 0 rgba(255, 42, 109, 0.9)) drop-shadow(-8px 0 0 rgba(0, 240, 255, 0.9)); }
+  77.5%{ transform: none;                             filter: drop-shadow(-2px 0 0 rgba(255, 42, 109, 0.75)) drop-shadow(2px 0 0 rgba(0, 240, 255, 0.75)); }
+  90%  { transform: translate(-7px, 0) skewX(-6deg);  filter: drop-shadow(-11px 0 0 rgba(255, 42, 109, 0.9)) drop-shadow(11px 0 0 rgba(0, 240, 255, 0.9)); }
+  92%, 100% { transform: none;                        filter: drop-shadow(-2px 0 0 rgba(255, 42, 109, 0.75)) drop-shadow(2px 0 0 rgba(0, 240, 255, 0.75)); }
+}
+
+@keyframes tear {
+  0%   { opacity: 0; }
+  8%   { opacity: 1; transform: translateX(-30%); }
+  12%  { opacity: 1; transform: translateX(25%); }
+  16%  { opacity: 0; }
+  60%  { opacity: 0; }
+  64%  { opacity: 1; transform: translateX(15%); }
+  68%  { opacity: 0; }
+  100% { opacity: 0; }
+}
+@keyframes flash { 0% { opacity: 0.22; } 100% { opacity: 0; } }
+@keyframes appear { from { opacity: 0; } to { opacity: 1; } }
+@keyframes crt-off {
+  0%   { transform: scale(1, 1);       filter: brightness(1); opacity: 1; }
+  30%  { transform: scale(1, 1);       filter: brightness(3); opacity: 1; }
+  65%  { transform: scale(1, 0.01);    filter: brightness(5); opacity: 1; }
+  85%  { transform: scale(0.01, 0.01); filter: brightness(5); opacity: 1; }
+  100% { transform: scale(0.01, 0.01); opacity: 0; }
+}
+@keyframes intro-failsafe { to { opacity: 0; visibility: hidden; pointer-events: none; } }
+
+/* ---------- Music player (top right) ---------- */
+.bgm-wrap {
+  position: fixed;
+  top: 0.8rem;
+  right: 1rem;
+  z-index: 60;
+}
+.bgm {
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+  padding: 0.45rem 0.9rem 0.45rem 0.45rem;
+  background: rgba(7, 7, 12, 0.92);
+  border: 1px solid var(--line);
+  border-right: 3px solid var(--yellow);
+  clip-path: polygon(10px 0, 100% 0, 100% 100%, 0 100%, 0 10px);
+  backdrop-filter: blur(8px);
+}
+
+.bgm-btn {
+  display: grid;
+  place-items: center;
+  width: 36px; height: 36px;
+  padding: 0;
+  border: 0;
+  cursor: pointer;
+  font-size: 1rem;
+  color: #07070c;
+  background: var(--yellow);
+  clip-path: polygon(7px 0, 100% 0, 100% calc(100% - 7px), calc(100% - 7px) 100%, 0 100%, 0 7px);
+  transition: background 0.15s ease;
+}
+.bgm-btn:hover,
+.bgm-btn:focus-visible { background: var(--cyan); animation: btn-glitch 0.45s steps(1) infinite; }
+.bgm.is-muted .bgm-btn { background: var(--magenta); }
+
+.bgm-range {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 110px;
+  height: 20px;
+  margin: 0;
+  background: transparent;
+  cursor: pointer;
+}
+.bgm-range::-webkit-slider-runnable-track {
+  height: 4px;
+  background: linear-gradient(to right, var(--yellow) var(--fill, 15%), rgba(255, 255, 255, 0.22) var(--fill, 15%));
+}
+.bgm-range::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  width: 10px; height: 16px;
+  margin-top: -6px;
+  border: 0;
+  background: var(--cyan);
+}
+.bgm-range::-moz-range-track {
+  height: 4px;
+  background: linear-gradient(to right, var(--yellow) var(--fill, 15%), rgba(255, 255, 255, 0.22) var(--fill, 15%));
+}
+.bgm-range::-moz-range-thumb {
+  width: 10px; height: 16px;
+  border: 0;
+  border-radius: 0;
+  background: var(--cyan);
+}
+.bgm.is-muted .bgm-range { opacity: 0.45; }
+
+.bgm-val {
+  min-width: 3.6ch;
+  text-align: right;
+  font-family: var(--font-mono);
+  font-size: 0.95rem;
+  color: var(--cyan);
+}
+.bgm.is-muted .bgm-val { color: var(--magenta); }
+
+.bgm-hint {
+  position: absolute;
+  top: calc(100% + 8px);
+  right: 0;
+  white-space: nowrap;
+  padding: 0.4rem 0.7rem;
+  font-family: var(--font-mono);
+  font-size: 0.85rem;
+  color: #07070c;
+  background: var(--yellow);
+  clip-path: polygon(8px 0, 100% 0, 100% 100%, 0 100%, 0 8px);
+}
+
+/* Narrower screens: player gets its own strip above the nav */
+@media (max-width: 1199px) {
+  body { padding-top: 3.6rem; }
+  .bgm-wrap { top: 0.5rem; }
+}
+@media (max-width: 480px) {
+  .bgm-range { width: 84px; }
+  .bgm-val { display: none; }
+  .bgm-wrap { right: 0.5rem; }
+}
+
+/* ---------- Reduced motion: static intro, no flashing ---------- */
+@media (prefers-reduced-motion: reduce) {
+  .intro-tears, .intro-flash { display: none; }
+}

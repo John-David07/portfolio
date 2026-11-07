@@ -9,77 +9,335 @@
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
   <!-- Google Fonts -->
-  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;800&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Barlow:wght@400;500;600&family=Chakra+Petch:wght@500;600;700&family=Share+Tech+Mono&display=swap" rel="stylesheet">
 
   <!-- Custom CSS -->
-  <link rel="stylesheet" href="about.css">
+  <link rel="stylesheet" href="cyberpunk.css">
+  <link rel="stylesheet" href="intro-music.css">
+  <script>try{if(sessionStorage.getItem('introSeen'))document.documentElement.classList.add('no-intro')}catch(e){}</script>
 </head>
 <body>
-  <!-- Waves Background -->
-  <div class="wave wave1"></div>
-  <div class="wave wave2"></div>
-  <div class="wave wave3"></div>
-
   <!-- Navigation -->
   <nav>
     <ul>
-      <li><a href="index.html">Home</a></li>
-      <li><a href="about.html" class="active">About</a></li>
-      <li><a href="techstack.html">Tech Stack</a></li>
-      <li><a href="contact.html">Contact</a></li>
+      <li><a href="index.html" data-text="Home">Home</a></li>
+      <li><a href="about.html" class="active" data-text="About">About</a></li>
+      <li><a href="techstack.html" data-text="Tech Stack">Tech Stack</a></li>
+      <li><a href="contact.html" data-text="Contact">Contact</a></li>
     </ul>
   </nav>
 
   <!-- Main Content -->
-  <main class="container py-5 text-white position-relative" style="z-index: 2;">
-    <section class="mb-5 text-center">
-      <h2>About <span class="highlight">Me</span></h2>
-      <p class="mt-4">
-        I'm currently in my second year pursuing a Bachelor's in Information Technology at St. Domonic College of Asia.
+  <main class="container py-5 text-white position-relative">
+    <!-- In-page section links -->
+    <div class="section-nav" role="navigation" aria-label="About page sections">
+      <a href="#about">About Me</a>
+      <a href="#values">Values</a>
+      <a href="#certifications">Certifications</a>
+      <a href="#capstone-project">Capstone Project</a>
+    </div>
+
+    <section id="about" class="mb-5 text-center">
+      <h2>About <span class="highlight glitch auto" data-text="Me">Me</span></h2>
+      <p class="mt-4 mx-auto" style="max-width: 760px;">
+        I'm currently in my last year pursuing a Bachelor's in Information Technology at St. Dominic College of Asia.
         While I'm still early in my coding journey, I've built solid foundations in Java and web development through coursework and personal projects.
         Most of my experience comes from building small applications for class assignments.
       </p>
-      <p>
+      <p class="mx-auto" style="max-width: 760px;">
         I'm eager to gain real-world experience through internships where I can contribute while learning from senior developers.
         My current goal is to master frontend development and improve my problem-solving skills.
-        Long-term, I hope to specialize in cloud computing or mobile development after graduation.
+        Long-term, I hope to become a proficient full-stack developer in the near future.
       </p>
     </section>
 
-    <section>
-      <h3 class="text-center mb-4">My <span class="highlight">Values</span></h3>
+    <section id="values">
+      <h3 class="text-center mb-4">My <span class="highlight glitch" data-text="Values">Values</span></h3>
       <div class="row text-center">
         <div class="col-md-3 mb-4">
           <div class="value-card h-100">
             <i class="fas fa-code fa-2x mb-3"></i>
-            <h4>Clean Code</h4>
+            <h4><span class="glitch" data-text="Clean Code">Clean Code</span></h4>
             <p>I write maintainable, efficient code that stands the test of time.</p>
           </div>
         </div>
         <div class="col-md-3 mb-4">
           <div class="value-card h-100">
             <i class="fas fa-mobile-alt fa-2x mb-3"></i>
-            <h4>Responsive Design</h4>
+            <h4><span class="glitch" data-text="Responsive Design">Responsive Design</span></h4>
             <p>Every site I build works beautifully on all devices.</p>
           </div>
         </div>
         <div class="col-md-3 mb-4">
           <div class="value-card h-100">
             <i class="fas fa-rocket fa-2x mb-3"></i>
-            <h4>Performance</h4>
+            <h4><span class="glitch" data-text="Performance">Performance</span></h4>
             <p>Fast loading times and smooth interactions are my priority.</p>
           </div>
         </div>
         <div class="col-md-3 mb-4">
           <div class="value-card h-100">
             <i class="fas fa-heart fa-2x mb-3"></i>
-            <h4>Passion</h4>
+            <h4><span class="glitch" data-text="Passion">Passion</span></h4>
             <p>I genuinely love what I do and it shows in my work.</p>
           </div>
         </div>
       </div>
     </section>
+    <!-- Achievements & Certifications -->
+    <section id="certifications" class="section-block">
+      <h3 class="text-center mb-4">Achievements &amp; <span class="highlight glitch" data-text="Certifications">Certifications</span></h3>
+      <div class="row justify-content-center">
+        <div class="col-md-4 mb-4">
+          <div class="value-card cert-card h-100">
+            <button type="button" class="cert-thumb" data-bs-toggle="modal" data-bs-target="#certModal1" aria-label="View Cybersecurity 101 certificate larger">
+              <img src="images/cybersec101.png" alt="Cybersecurity 101 certificate" loading="lazy">
+              <span class="zoom-hint"><i class="fas fa-magnifying-glass-plus"></i></span>
+            </button>
+            <h4><span class="glitch" data-text="Cybersecurity 101">Cybersecurity 101</span></h4>
+            <div class="cert-actions">
+              <button type="button" class="cert-btn" data-bs-toggle="modal" data-bs-target="#certModal1"><i class="fas fa-expand"></i> View Larger</button>
+              <a class="cert-btn cert-btn-alt" href="images/certificate-of-participation.pdf" target="_blank" rel="noopener"><i class="fas fa-file-pdf"></i> View PDF</a>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4 mb-4">
+          <div class="value-card cert-card h-100">
+            <button type="button" class="cert-thumb" data-bs-toggle="modal" data-bs-target="#certModal2" aria-label="View Java Course certificate larger">
+              <img src="images/javacourse.png" alt="Java Course certificate" loading="lazy">
+              <span class="zoom-hint"><i class="fas fa-magnifying-glass-plus"></i></span>
+            </button>
+            <h4><span class="glitch" data-text="Java Course">Java Course</span></h4>
+            <div class="cert-actions">
+              <button type="button" class="cert-btn" data-bs-toggle="modal" data-bs-target="#certModal2"><i class="fas fa-expand"></i> View Larger</button>
+              <a class="cert-btn cert-btn-alt" href="images/clmscertificate.pdf" target="_blank" rel="noopener"><i class="fas fa-file-pdf"></i> View PDF</a>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4 mb-4">
+          <div class="value-card cert-card h-100">
+            <button type="button" class="cert-thumb" data-bs-toggle="modal" data-bs-target="#certModal3" aria-label="View Introduction to IoT certificate larger">
+              <img src="images/introtoiot.png" alt="Introduction to IoT certificate" loading="lazy">
+              <span class="zoom-hint"><i class="fas fa-magnifying-glass-plus"></i></span>
+            </button>
+            <h4><span class="glitch" data-text="Introduction to IoT">Introduction to IoT</span></h4>
+            <div class="cert-actions">
+              <button type="button" class="cert-btn" data-bs-toggle="modal" data-bs-target="#certModal3"><i class="fas fa-expand"></i> View Larger</button>
+              <a class="cert-btn cert-btn-alt" href="images/introtoiot.pdf" target="_blank" rel="noopener"><i class="fas fa-file-pdf"></i> View PDF</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Capstone Project & IoT -->
+    <section id="capstone-project" class="section-block">
+      <h3 class="text-center mb-4">Capstone & IoT <span class="highlight glitch" data-text="Project">Project</span></h3>
+      <article class="value-card project-card">
+        <dl class="project-fields">
+        <div class="project-field">
+          <dt>Project Title</dt>
+          <dd><span class="tbd">tRoot: AI-Driven Multi-Node System for Soil Monitoring
+             with Real-Time Adaptive Gardening Recommendations through Visualized Soil Viability Tracking</span></dd>
+        </div>
+        <div class="project-field">
+          <dt>Description</dt>
+          <dd><span class="tbd">an AI-driven multi-node soil monitoring system designed for micro-scale gardening — residential gardens, home nurseries,
+             and small-scale growers in the Philippines. It uses an ESP32 microcontroller with five capacitive
+             soil moisture sensors and a DHT22 temperature/humidity sensor to continuously track environmental conditions
+             across multiple plant pots, syncing data to Firebase in real time. The system provides AI-powered plant recommendations
+             based on manually inputted soil pH along with sensor-derived moisture, temperature, and humidity, and includes
+             AI plant and soil identification features to help users make data-driven gardening decisions and avoid
+             "silent crop failure."</span></dd>
+        </div>
+        <div class="project-field">
+          <dt>Objectives</dt>
+          <dd><div class="tbd-list">
+            <p class="tbd">1. Design and construct a multi-node edge hardware architecture using
+             an ESP32 microcontroller, a DHT22 atmospheric sensor, and five capacitive soil moisture sensors (V1.2)
+             to capture localized temperature, humidity, and per-pot substrate moisture.</p>
+            <p class="tbd">2. Establish a secure, low-latency cloud synchronization link between the edge device
+             and a Firebase Realtime Database, with accurate timestamping via NTP for seamless remote access
+             through web and mobile interfaces.</p>
+            <p class="tbd">3. Develop a Sensor-Based AI Recommendation Engine that processes moisture,
+             pH, temperature, and humidity data to generate automated plant suitability recommendations
+             for Philippine-native and locally available species, including detailed care guides.</p>
+            <p class="tbd">4. Implement centralized, cross-platform web and mobile applications (Next.js/React web app and Flutter mobile app)
+             that visualize real-time telemetry, historical logs, and AI recommendations.</p>
+            <p class="tbd">5. Validate operational reliability and decision-making accuracy through structured
+             field testing, measuring data transmission success rates and evaluating the biological relevance of
+             generated plant recommendations.</p>
+            </div></dd>
+        </div>
+        <div class="project-field">
+          <dt>Technologies Used</dt>
+          <dd><div class="tbd-chips">
+            <span class="tbd">ESP32 Microcontroller</span>
+            <span class="tbd">DHT22 Sensor</span>
+            <span class="tbd">5x Capacitive Soil Moisture Sensors (V1.2)</span></div></dd>
+        </div>
+        <div class="project-field">
+          <dt>Team Members</dt>
+          <dd><div class="tbd-list">
+            <p class="tbd">Johnelli Mickel Pordan</p>
+            <p class="tbd">Klein Arnie Ortega</p>
+            <p class="tbd">John Jayson Zaldivar</p>
+            <p class="tbd">John David Dechavez</p></div>
+          </dd>
+        </div>
+        <div class="project-field">
+          <dt>My Role</dt>
+          <dd><span class="tbd">Full-stack developer</span></dd>
+        </div>
+        <div class="project-field">
+          <dt>Current Status</dt>
+          <dd><span class="tbd">In progress</span></dd>
+        </div>
+        <div class="project-field">
+          <dt>Pictures</dt>
+          <dd>
+            <div class="photo-grid">
+              <figure class="photo-item">
+                <button type="button" class="cert-thumb" data-bs-toggle="modal" data-bs-target="#capModal1" aria-label="View capstone picture 1 larger">
+                  <img src="images/ss1.png" alt="Capstone project picture 1" loading="lazy">
+                  <span class="zoom-hint"><i class="fas fa-magnifying-glass-plus"></i></span>
+                </button>
+                <div class="cert-actions">
+                  <button type="button" class="cert-btn" data-bs-toggle="modal" data-bs-target="#capModal1"><i class="fas fa-expand"></i> View Larger</button>
+                </div>
+              </figure>
+
+              <figure class="photo-item">
+                <button type="button" class="cert-thumb" data-bs-toggle="modal" data-bs-target="#capModal2" aria-label="View capstone picture 2 larger">
+                  <img src="images/ss2.png" alt="Capstone project picture 2" loading="lazy">
+                  <span class="zoom-hint"><i class="fas fa-magnifying-glass-plus"></i></span>
+                </button>
+                <div class="cert-actions">
+                  <button type="button" class="cert-btn" data-bs-toggle="modal" data-bs-target="#capModal2"><i class="fas fa-expand"></i> View Larger</button>
+                </div>
+              </figure>
+
+              <figure class="photo-item">
+                <button type="button" class="cert-thumb" data-bs-toggle="modal" data-bs-target="#capModal3" aria-label="View capstone picture 3 larger">
+                  <img src="images/ss3.png" alt="Capstone project picture 3" loading="lazy">
+                  <span class="zoom-hint"><i class="fas fa-magnifying-glass-plus"></i></span>
+                </button>
+                <div class="cert-actions">
+                  <button type="button" class="cert-btn" data-bs-toggle="modal" data-bs-target="#capModal3"><i class="fas fa-expand"></i> View Larger</button>
+                </div>
+              </figure>
+            </div>
+          </dd>
+        </div>
+        </dl>
+      </article>
+    </section>
   </main>
+
+  <!-- Certificate viewer: Cybersecurity 101 -->
+  <div class="modal fade cyber-modal" id="certModal1" tabindex="-1" aria-labelledby="certModal1Label" aria-hidden="true">
+    <div class="modal-dialog modal-xl modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="certModal1Label">Cybersecurity 101</h5>
+          <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body text-center">
+          <img src="images/cybersec101.png" alt="Cybersecurity 101 certificate" class="img-fluid">
+        </div>
+        <div class="modal-footer">
+          <a class="cert-btn cert-btn-alt" href="images/certificate-of-participation.pdf" target="_blank" rel="noopener"><i class="fas fa-file-pdf"></i> View PDF</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Certificate viewer: Java Course -->
+  <div class="modal fade cyber-modal" id="certModal2" tabindex="-1" aria-labelledby="certModal2Label" aria-hidden="true">
+    <div class="modal-dialog modal-xl modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="certModal2Label">Java Course</h5>
+          <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body text-center">
+          <img src="images/javacourse.png" alt="Java Course certificate" class="img-fluid">
+        </div>
+        <div class="modal-footer">
+          <a class="cert-btn cert-btn-alt" href="images/clmscertificate.pdf" target="_blank" rel="noopener"><i class="fas fa-file-pdf"></i> View PDF</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Certificate viewer: Introduction to IoT -->
+  <div class="modal fade cyber-modal" id="certModal3" tabindex="-1" aria-labelledby="certModal3Label" aria-hidden="true">
+    <div class="modal-dialog modal-xl modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="certModal3Label">Introduction to IoT</h5>
+          <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body text-center">
+          <img src="images/introtoiot.png" alt="Introduction to IoT certificate" class="img-fluid">
+        </div>
+        <div class="modal-footer">
+          <a class="cert-btn cert-btn-alt" href="images/introtoiot.pdf" target="_blank" rel="noopener"><i class="fas fa-file-pdf"></i> View PDF</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+    <!-- Capstone picture viewer 1 -->
+  <div class="modal fade cyber-modal" id="capModal1" tabindex="-1" aria-labelledby="capModal1Label" aria-hidden="true">
+    <div class="modal-dialog modal-xl modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="capModal1Label">Capstone Project – Picture 1</h5>
+          <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body text-center">
+          <img src="images/ss1.png" alt="Capstone project picture 1" class="img-fluid">
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Capstone picture viewer 2 -->
+  <div class="modal fade cyber-modal" id="capModal2" tabindex="-1" aria-labelledby="capModal2Label" aria-hidden="true">
+    <div class="modal-dialog modal-xl modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="capModal2Label">Capstone Project – Picture 2</h5>
+          <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body text-center">
+          <img src="images/ss2.png" alt="Capstone project picture 2" class="img-fluid">
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Capstone picture viewer 3 -->
+  <div class="modal fade cyber-modal" id="capModal3" tabindex="-1" aria-labelledby="capModal3Label" aria-hidden="true">
+    <div class="modal-dialog modal-xl modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="capModal3Label">Capstone Project – Picture 3</h5>
+          <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body text-center">
+          <img src="images/ss3.png" alt="Capstone project picture 3" class="img-fluid">
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="cyberpunk.js"></script>
+  <script src="music.js"></script>
 </body>
 </html>
